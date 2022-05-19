@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 export interface IMovie {
-  _id: mongoose.Schema.Types.ObjectId;
+  _id?: mongoose.Schema.Types.ObjectId;
   poster_url: string;
   backdrop_url: string;
   title: string;
@@ -10,7 +10,7 @@ export interface IMovie {
   genres: mongoose.Schema.Types.ObjectId[];
   language: string;
   duration: string;
-  created_at: Date;
+  created_at?: Date;
 }
 
 const MovieSchema: mongoose.Schema = new mongoose.Schema<IMovie>({

@@ -2,6 +2,7 @@ import GenreModel from "../../models/genre.model";
 import { Request, Response, NextFunction } from "express";
 
 export const createGenre = async (req: Request, res: Response, next: NextFunction) => {
+  console.log("POST /genre/create");
   try {
     const { name } = req.body;
 

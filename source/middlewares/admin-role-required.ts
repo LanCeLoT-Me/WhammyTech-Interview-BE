@@ -23,8 +23,10 @@ export const adminRoleRequired = async (req: Request, res: Response, next: NextF
         }
       }
     } else return res.status(401).json({ message: "You are not authorized !" });
-  } catch (error) {
+  } catch (error: any) {
     console.log("Location: /source/middlewares/admin-role-required.ts", error);
-    return res.status(500).json({ Error: error });
+    if (error.code === "auth/id-token-expired") {
+      return res.status(401).json({ message: "Your login session expired !" });
+    } else return res.status(500).json({ Error: error });
   }
 };
