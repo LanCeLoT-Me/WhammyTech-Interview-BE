@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-interface IMovieSchema {
+export interface IMovie {
   _id: mongoose.Schema.Types.ObjectId;
   poster_url: string;
   backdrop_url: string;
@@ -13,7 +13,7 @@ interface IMovieSchema {
   created_at: Date;
 }
 
-const MovieSchema: mongoose.Schema = new mongoose.Schema<IMovieSchema>({
+const MovieSchema: mongoose.Schema = new mongoose.Schema<IMovie>({
   poster_url: { type: String, required: true },
   backdrop_url: { type: String, required: true },
   title: { type: String, required: true },

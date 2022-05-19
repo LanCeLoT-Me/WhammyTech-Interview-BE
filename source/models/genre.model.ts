@@ -1,16 +1,16 @@
 import mongoose from "mongoose";
 
-interface IGenresSchema {
+export interface IGenre {
   _id: mongoose.Schema.Types.ObjectId;
   name: string;
   created_at: Date;
 }
 
-const GenresSchema: mongoose.Schema = new mongoose.Schema<IGenresSchema>({
+const GenreSchema: mongoose.Schema = new mongoose.Schema<IGenre>({
   name: { type: String, required: true },
   created_at: { type: Date, required: true, default: () => new Date() },
 });
 
-const GenresModel = mongoose.model("genres", GenresSchema);
+const GenreModel = mongoose.model("genres", GenreSchema);
 
-export default GenresModel;
+export default GenreModel;

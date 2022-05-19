@@ -1,12 +1,18 @@
+import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
+import router from "./source/routes";
+import { corsOptions } from "./source/configs/cors";
 
 dotenv.config();
 
 const server: express.Express = express();
 
 server.use(express.json());
+server.use(cors(corsOptions));
+
+server.use("/api", router);
 
 server.listen(process.env.PORT || 8545, () => {
   console.log(`Server is listening at port ${process.env.PORT} !`);
