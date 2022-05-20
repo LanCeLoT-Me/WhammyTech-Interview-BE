@@ -24,7 +24,7 @@ const UserSchema: mongoose.Schema = new mongoose.Schema<IUser>({
   photo_url: { type: String },
   role: { type: String, default: "user" },
   favorite_movies: {
-    type: [{ type: mongoose.Schema.Types.ObjectId }],
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: "movies" }],
     required: false,
     default: [],
   },
