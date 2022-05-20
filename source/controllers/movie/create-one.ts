@@ -13,6 +13,7 @@ export const createMovie = async (req: Request, res: Response, next: NextFunctio
     const genres = req.body.genres;
     const language = req.body.language;
     const duration = req.body.duration;
+    const release_date = req.body.release_date;
 
     if (poster_url === "")
       return res.status(400).json({ error: "Movie's poster_url can not be empty !" });
@@ -30,6 +31,8 @@ export const createMovie = async (req: Request, res: Response, next: NextFunctio
       return res.status(400).json({ error: "Movie's language can not be empty !" });
     else if (duration === "")
       return res.status(400).json({ error: "Movie's duration can not be empty !" });
+    else if (release_date === "")
+      return res.status(400).json({ error: "Movie's release date can not be empty !" });
 
     const genreArr = genres.map((genre: string) => {
       return new mongoose.Types.ObjectId(genre);
@@ -44,6 +47,7 @@ export const createMovie = async (req: Request, res: Response, next: NextFunctio
       genres: genreArr,
       language,
       duration,
+      release_date: new Date(Date.parse(release_date)),
     };
 
     const movie = await MovieModel.create(data);

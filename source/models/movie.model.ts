@@ -10,6 +10,7 @@ export interface IMovie {
   genres: mongoose.Schema.Types.ObjectId[];
   language: string;
   duration: string;
+  release_date: Date;
   created_at?: Date;
 }
 
@@ -19,9 +20,10 @@ const MovieSchema: mongoose.Schema = new mongoose.Schema<IMovie>({
   title: { type: String, required: true },
   popularity: { type: Number, required: false, default: 0.0 },
   synopsis: { type: String, required: true },
-  genres: { type: [{ type: mongoose.Schema.Types.ObjectId }], required: true },
+  genres: { type: [{ type: mongoose.Schema.Types.ObjectId, ref: "genres" }], required: true },
   language: { type: String, required: true },
   duration: { type: String, required: true },
+  release_date: { type: Date, required: true },
   created_at: { type: Date, required: true, default: () => new Date() },
 });
 

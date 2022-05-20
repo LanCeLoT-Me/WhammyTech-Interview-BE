@@ -10,11 +10,11 @@ export const getAllMovies = async (req: Request, res: Response, next: NextFuncti
     let sortOptions: any = { created_at: "desc" };
 
     switch (sort_by) {
-      case "created_at.asc":
-        sortOptions = { created_at: "asc" };
+      case "release_date.asc":
+        sortOptions = { release_date: "asc" };
         break;
-      case "created_at.desc":
-        sortOptions = { created_at: "desc" };
+      case "release_date.desc":
+        sortOptions = { release_date: "desc" };
         break;
       case "alphabetical.asc":
         sortOptions = { title: "asc" };
