@@ -30,8 +30,6 @@ export const getAllMovies = async (req: Request, res: Response, next: NextFuncti
         break;
     }
 
-    console.log(sortOptions);
-
     const skipAmount = (page - 1) * limit;
     const totalMovies = await (await MovieModel.find()).length;
     const totalPages = Math.ceil(totalMovies / limit);
