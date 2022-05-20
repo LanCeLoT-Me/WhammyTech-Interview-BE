@@ -35,7 +35,6 @@ export const createMovie = async (req: Request, res: Response, next: NextFunctio
       return new mongoose.Types.ObjectId(genre);
     });
 
-    console.log(genreArr);
     const data: IMovie = {
       poster_url,
       backdrop_url,
