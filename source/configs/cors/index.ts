@@ -1,8 +1,4 @@
-const whiteList: string[] = [
-  "http://localhost:3000",
-  "https://whammytech-interview.web.app",
-  "https://whammytech-interview.firebaseapp.com",
-];
+const whiteList: string[] = ["http://localhost:3000", "https://whammy-tech-interview.vercel.app"];
 
 export const corsOptions = {
   origin: function (origin: any, callback: any) {
