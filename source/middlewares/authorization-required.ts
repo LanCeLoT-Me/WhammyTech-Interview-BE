@@ -17,7 +17,9 @@ export const authorizationRequired = async (req: Request, res: Response, next: N
         if (decodedToken.exp > Date.now())
           return res.status(401).json({ message: "Your login session has expired !" });
         else {
-          const user = await UserModel.findOne({ uid: decodedToken.uid });
+          const user = await UserModel.findOne({ uid: decodedToken.uid }).populate([
+            { path: "favorite_movies", select: "-created_at" },
+          ]);
           req.params.user = user;
           next();
         }

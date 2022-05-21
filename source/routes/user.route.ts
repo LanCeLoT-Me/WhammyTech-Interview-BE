@@ -7,6 +7,11 @@ import { serverMiddlewares } from "../middlewares";
 const userRouter: express.Router = express.Router();
 
 userRouter.post("/create", userControllers.createUser);
+userRouter.get(
+  "/get-favorite-movies",
+  serverMiddlewares.authorizationRequired,
+  userControllers.getFavoriteMovies
+);
 userRouter.post(
   "/add-movie-to-favorites",
   serverMiddlewares.authorizationRequired,
