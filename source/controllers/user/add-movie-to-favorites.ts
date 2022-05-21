@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import UserModel from "../../models/user.model";
 import { Request, Response, NextFunction } from "express";
 
@@ -9,7 +10,7 @@ export const addMovieToFavorites = async (req: Request, res: Response, next: Nex
     const user_favorite_movies: string[] = user.favorite_movies;
 
     if (user_favorite_movies.length === 0 || !user_favorite_movies.includes(movie_id)) {
-      user.favorite_movies.push(movie_id);
+      user.favorite_movies.push(new mongoose.Types.ObjectId(movie_id));
       await user.save();
       return res.status(200).json({ message: "Add movie to favorites successfully !" });
     }

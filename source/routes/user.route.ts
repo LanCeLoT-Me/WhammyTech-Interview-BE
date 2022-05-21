@@ -12,5 +12,10 @@ userRouter.post(
   serverMiddlewares.authorizationRequired,
   userControllers.addMovieToFavorites
 );
+userRouter.post(
+  "/remove-movie-from-favorites",
+  serverMiddlewares.authorizationRequired,
+  userControllers.removeMovieFromFavorites
+);
 
 export default userRouter;
